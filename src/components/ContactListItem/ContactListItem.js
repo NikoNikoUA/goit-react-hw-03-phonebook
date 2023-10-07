@@ -1,12 +1,10 @@
-import css from './ContactListItem.module.css';
+import { BtnDeleteItem, ListItem } from './ContactListItem.styled';
 
 export const ContactListItem = ({ name, number, id, onRemoveContact }) => {
   return (
-    <li key={id} className={css.listItem}>
+    <ListItem key={id}>
       {name}: {number}
-      <button className={css.btnDeleteItem} onClick={() => onRemoveContact(id)}>
-        Remove
-      </button>
-    </li>
+      <BtnDeleteItem onClick={() => onRemoveContact(id)}>Remove</BtnDeleteItem>
+    </ListItem>
   );
 };

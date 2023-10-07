@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { nanoid } from 'nanoid'
-import css from './App.module.css'
 import { GiRotaryPhone} from 'react-icons/gi'
 
 import ContactForm from '../components/ContactForm/ContactForm'
 import { Filter } from '../components/Filter/Filter'
 import { ContactList } from '../components/ContactList/ContactList'
+
+import {Container,FormContainer, StatisticsContainer, ContactsHeading, MainHeading, NoContactsText} from './App.styled'
 
 Notify.init({
   borderRadius: '10px',
@@ -38,7 +39,7 @@ state = {
   
   onAddingContact = ({ name, number }) => {
     const { contacts } = this.state;
-    if (contacts.some(contact => contact.name.toLowerCase() === name.toLoweCase())) {
+    if (contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())) {
         return Notify.info(`${name} is already among your contacts`);
     }
 
@@ -77,17 +78,17 @@ state = {
     const filteredContacts = this.onFilteringContacts();
 
    return (
-    <div className={css.container}>
-      <div className={css.formContainer}>
-         <h1 className={css.mainHeading}>Phonebook <GiRotaryPhone className={ css.icon} /></h1>
+    <Container>
+      <FormContainer>
+         <MainHeading>Phonebook <GiRotaryPhone/></MainHeading>
          <ContactForm onSubmit={this.onAddingContact} />
-        </div>
-<div className={css.statisticsContainer}>
-  <h2 className={css.contactsHeading}>Contacts</h2>
+        </FormContainer>
+<StatisticsContainer>
+  <ContactsHeading>Contacts</ContactsHeading>
        <Filter value={filter} onChange={ this.onFilterChange} />
-      {contacts.length ? (<ContactList contacts={filteredContacts} onRemoveContact={this.onRemoveContact} />) : (<p className={css.noContactsText}>There are no contacts in your phoneboook</p>)}
-    </div>
-       </div>
+      {contacts.length ? (<ContactList contacts={filteredContacts} onRemoveContact={this.onRemoveContact} />) : (<NoContactsText>There are no contacts in your phoneboook</NoContactsText>)}
+    </StatisticsContainer>
+       </Container>
   )
 }
 }

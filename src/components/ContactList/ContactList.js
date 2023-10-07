@@ -1,9 +1,9 @@
-import css from './ContactList.module.css';
+import { ContactsList } from './ContactList.styled';
 import { ContactListItem } from '../../components/ContactListItem/ContactListItem';
 
 export const ContactList = ({ contacts, onRemoveContact }) => {
   return (
-    <ul className={css.contactsList}>
+    <ContactsList>
       {contacts.map(({ name, number, id }) => {
         return (
           <ContactListItem
@@ -15,6 +15,6 @@ export const ContactList = ({ contacts, onRemoveContact }) => {
           />
         );
       })}
-    </ul>
+    </ContactsList>
   );
 };

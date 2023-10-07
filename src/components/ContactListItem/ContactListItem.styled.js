@@ -1,11 +1,13 @@
-.listItem {
+import styled from 'styled-components';
+
+export const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-}
+`;
 
-.btnDeleteItem {
+export const BtnDeleteItem = styled.button`
   min-width: 70px;
   height: 30px;
   border: none;
@@ -13,4 +15,8 @@
   font-weight: bold;
   background-color: orange;
   box-shadow: 0px 0px 4px white;
-}
+
+  :hover {
+    background-color: orangered;
+  }
+`;

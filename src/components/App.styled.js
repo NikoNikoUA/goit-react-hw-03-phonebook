@@ -1,4 +1,6 @@
-.container {
+import styled from 'styled-components';
+
+export const Container = styled.div`
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -19,9 +21,9 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
     -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6),
     inset 0 0 40px rgba(0, 0, 0, 0.1);
-}
+`;
 
-.formContainer {
+export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,9 +43,9 @@
   background-color: rgb(107, 107, 239);
   border: none;
   border-radius: 8px;
-}
+`;
 
-.statisticsContainer {
+export const StatisticsContainer = styled.div`
   position: absolute;
   background-color: rgb(107, 107, 239);
   top: 250px;
@@ -57,9 +59,9 @@
   margin-left: auto;
   margin-right: auto;
   gap: 15px;
-}
+`;
 
-.mainHeading {
+export const MainHeading = styled.h1`
   margin: 0;
   font-weight: bold;
   display: flex;
@@ -67,21 +69,22 @@
   justify-content: center;
   gap: 10px;
   color: rgb(145, 233, 123);
-}
-.contactsHeading {
+`;
+
+export const ContactsHeading = styled.h2`
   margin: 0;
   font-weight: bold;
   color: rgb(145, 233, 123);
-}
+`;
 
-.noContactsText {
+export const NoContactsText = styled.p`
   font-size: 14px;
   text-align: center;
   font-weight: bold;
-}
+`;
 
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+// export const Icon = styled.svg`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;

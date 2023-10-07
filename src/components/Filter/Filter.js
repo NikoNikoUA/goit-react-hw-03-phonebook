@@ -1,19 +1,18 @@
-import css from './Filter.module.css';
+import { LabelFilter, InputFilter } from '../Filter/Filter.styled';
 
 export const Filter = ({ value, onChange }) => {
   return (
     <>
-      <label className={css.labelFilter}>
+      <LabelFilter>
         Find contacts by name
-        <input
-          className={css.inputFilter}
+        <InputFilter
           type="text"
           value={value}
           onChange={onChange}
           placeholder="Filter by name..."
           pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        ></input>
-      </label>
+        ></InputFilter>
+      </LabelFilter>
     </>
   );
 };
