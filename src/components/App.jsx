@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { nanoid } from 'nanoid'
 import { GiRotaryPhone} from 'react-icons/gi'
 
-import ContactForm from '../components/ContactForm/ContactForm'
+import { ContactForm } from '../components/ContactForm/ContactForm'
 import { Filter } from '../components/Filter/Filter'
 import { ContactList } from '../components/ContactList/ContactList'
 

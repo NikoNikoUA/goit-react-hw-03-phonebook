@@ -1,65 +1,64 @@
-import React, { Component } from 'react';
+import React from 'react';
+import * as Yup from 'yup';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import css from './ContactForm.module.css';
 
-class ContactForm extends Component {
-  state = {
-    number: '',
-    name: '',
-  };
+const Schema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Min 2 letters')
+    .max(18, 'Max 18 letters')
+    .required('Is required!'),
+  number: Yup.number()
+    .min(6, 'Min 6 symbols')
+    // .max(10, 'Max 10 symbols')
+    .required('Is required!'),
+});
 
-  onInputChange = event => {
-    const { name, value } = event.currentTarget;
-    this.setState({
-      [name]: value,
-    });
-  };
+export const ContactForm = ({ onSubmit }) => {
+  // onFormSubmit = event => {
+  //   event.preventDefault();
+  //   this.props.onSubmit(this.state);
 
-  onFormSubmit = event => {
-    event.preventDefault();
-    this.props.onSubmit(this.state);
+  //   this.reset();
+  // };
 
-    this.reset();
-  };
-
-  reset = () => {
-    this.setState({ number: '', name: '' });
-  };
-
-  render() {
-    return (
-      <form className={css.form} onSubmit={this.onFormSubmit}>
+  return (
+    <Formik
+      initialValues={{
+        number: 0,
+        name: '',
+      }}
+      validationSchema={Schema}
+      onSubmit={(values, actions) => {
+        onSubmit(values);
+        actions.resetForm();
+      }}
+    >
+      <Form className={css.form}>
         <label className={css.labelName}>
           Name
-          <input
+          <Field
             className={css.inputName}
             type="text"
             name="name"
-            required
-            value={this.state.name}
-            onChange={this.onInputChange}
             placeholder="Enter name..."
-            pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           />
+          <ErrorMessage name="name" />
         </label>
         <label className={css.labelTel}>
           Number
-          <input
+          <Field
             className={css.inputTel}
             type="tel"
             name="number"
-            required
-            value={this.state.number}
-            onChange={this.onInputChange}
             placeholder="Enter number..."
-            pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
           />
+          <ErrorMessage name="number" />
         </label>
         <button className={css.btnAddContact} type="submit">
           Add contact
         </button>
-      </form>
-    );
-  }
-}
-
-export default ContactForm;
+      </Form>
+    </Formik>
+  );
+};
