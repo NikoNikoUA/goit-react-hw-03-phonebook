@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Yup from 'yup';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { Label } from './ContactForm.styled';
 import { Input, BtnAddContact, ErrorMsg } from './ContactForm.styled';
 
