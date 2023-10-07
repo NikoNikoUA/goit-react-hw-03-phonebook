@@ -13,10 +13,10 @@ export const BtnDeleteItem = styled.button`
   border: none;
   border-radius: 15px;
   font-weight: bold;
-  background-color: orange;
   box-shadow: 0px 0px 4px white;
+  background-color: ${props => props.theme.colors.btnColor};
 
   :hover {
-    background-color: orangered;
+    background-color: ${props => props.theme.colors.btnHover};
   }
 `;

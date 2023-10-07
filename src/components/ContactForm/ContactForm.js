@@ -1,7 +1,8 @@
 import React from 'react';
 import * as Yup from 'yup';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import css from './ContactForm.module.css';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { Label } from './ContactForm.styled';
+import { Input, BtnAddContact, ErrorMsg } from './ContactForm.styled';
 
 const Schema = Yup.object().shape({
   name: Yup.string()
@@ -15,17 +16,10 @@ const Schema = Yup.object().shape({
 });
 
 export const ContactForm = ({ onSubmit }) => {
-  // onFormSubmit = event => {
-  //   event.preventDefault();
-  //   this.props.onSubmit(this.state);
-
-  //   this.reset();
-  // };
-
   return (
     <Formik
       initialValues={{
-        number: 0,
+        number: '',
         name: '',
       }}
       validationSchema={Schema}
@@ -34,30 +28,18 @@ export const ContactForm = ({ onSubmit }) => {
         actions.resetForm();
       }}
     >
-      <Form className={css.form}>
-        <label className={css.labelName}>
+      <Form>
+        <Label>
           Name
-          <Field
-            className={css.inputName}
-            type="text"
-            name="name"
-            placeholder="Enter name..."
-          />
-          <ErrorMessage name="name" />
-        </label>
-        <label className={css.labelTel}>
+          <Input type="text" name="name" placeholder="Enter name..." />
+          <ErrorMsg component="div" name="name" />
+        </Label>
+        <Label>
           Number
-          <Field
-            className={css.inputTel}
-            type="tel"
-            name="number"
-            placeholder="Enter number..."
-          />
-          <ErrorMessage name="number" />
-        </label>
-        <button className={css.btnAddContact} type="submit">
-          Add contact
-        </button>
+          <Input type="tel" name="number" placeholder="Enter number..." />
+          <ErrorMsg component="div" name="number" />
+        </Label>
+        <BtnAddContact type="submit">Add contact</BtnAddContact>
       </Form>
     </Formik>
   );

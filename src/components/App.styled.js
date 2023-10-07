@@ -13,7 +13,7 @@ export const Container = styled.div`
   height: 500px;
   margin-top: 80px;
   position: relative;
-  background-color: rgb(64, 64, 239);
+  background-color: ${props => props.theme.colors.containerColor};
 
   border: none;
   border-radius: 15px;
@@ -40,14 +40,14 @@ export const FormContainer = styled.div`
   left: -50px;
 
   box-shadow: 2px 2px 4px white;
-  background-color: rgb(107, 107, 239);
+  background-color: ${props => props.theme.colors.backgroundColor};
   border: none;
   border-radius: 8px;
 `;
 
 export const StatisticsContainer = styled.div`
   position: absolute;
-  background-color: rgb(107, 107, 239);
+  background-color: ${props => props.theme.colors.backgroundColor};
   top: 250px;
   right: -50px;
   min-width: 300px;
