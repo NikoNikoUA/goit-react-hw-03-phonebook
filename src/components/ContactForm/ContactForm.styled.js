@@ -39,7 +39,7 @@ export const BtnAddContact = styled.button`
 
   box-shadow: 0px 0px 4px white;
 
-  :hover {
+  &:hover {
     background-color: ${props => props.theme.colors.btnHover};
   }
 `;

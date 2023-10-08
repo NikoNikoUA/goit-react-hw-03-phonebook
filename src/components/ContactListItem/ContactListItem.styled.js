@@ -16,7 +16,7 @@ export const BtnDeleteItem = styled.button`
   box-shadow: 0px 0px 4px white;
   background-color: ${props => props.theme.colors.btnColor};
 
-  :hover {
+  &:hover {
     background-color: ${props => props.theme.colors.btnHover};
   }
 `;

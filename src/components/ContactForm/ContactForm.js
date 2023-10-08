@@ -1,18 +1,28 @@
 import React from 'react';
-import * as Yup from 'yup';
+import * as yup from 'yup';
 import { Formik, Form } from 'formik';
 import { Label } from './ContactForm.styled';
 import { Input, BtnAddContact, ErrorMsg } from './ContactForm.styled';
 
-const Schema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Min 2 letters')
-    .max(18, 'Max 18 letters')
-    .required('Is required!'),
-  number: Yup.number()
-    .min(6, 'Min 6 symbols')
-    // .max(10, 'Max 10 symbols')
-    .required('Is required!'),
+const Schema = yup.object().shape({
+  name: yup
+    .string()
+    .required('Required')
+    .min(3, 'Name must be 3-25 characters long')
+    .max(25, 'Name must be 3-25 characters long')
+    .matches(
+      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+      'Enter valid symbols'
+    ),
+  number: yup
+    .string()
+    .required('Required')
+    .min(6, 'Number must be 6-13 characters long')
+    .max(13, 'Number must be 6-13 characters long')
+    .matches(
+      /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
+      'Enter valid symbols'
+    ),
 });
 
 export const ContactForm = ({ onSubmit }) => {
