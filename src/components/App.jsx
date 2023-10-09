@@ -27,9 +27,23 @@ state = {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ],
   filter: '',
-  
+    }
+
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contacts');
+    if (savedContacts !== null) {
+      this.setState({ contacts: JSON.parse(savedContacts) });
+    }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const currentContacts = this.state.contacts;
+    const previousContacts = prevState.contacts;
+    if (currentContacts !== previousContacts) {
+      localStorage.setItem('contacts', JSON.stringify(currentContacts));
+    }
+  }
+  
   onRemoveContact = (contactId) => {
      this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId)
